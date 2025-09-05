@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ya ro7i</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #667eea;
+            --secondary-blue: #764ba2;
+            --accent-blue: #4facfe;
+            --light-blue: #a8e6cf;
+            --dark-blue: #2c3e50;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(-45deg, var(--primary-blue), var(--secondary-blue), var(--accent-blue), var(--light-blue));
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            line-height: 1.6;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 15px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, var(--light-blue), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--light-blue);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.8;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+        }
+
+        .photo-card {
+            aspect-ratio: 1;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .photo-card:hover {
+            transform: scale(1.03);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            position: relative;
+            padding: 20px;
+        }
+
+        .photo-placeholder::after {
+            content: '📷';
+            font-size: clamp(3rem, 8vw, 4rem);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+        }
+
+        .timeline-section {
+            margin: 80px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--light-blue));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 20px 30px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+            animation: slideInTimeline 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            animation-delay: 0.2s;
+            transform: translateX(-50px);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            animation-delay: 0.4s;
+            transform: translateX(50px);
+        }
+
+        @keyframes slideInTimeline {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .timeline-date {
+            color: var(--light-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .timeline-content p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .timeline-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-blue), var(--light-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-top: 15px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--light-blue);
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 40px;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Memory Game Styles */
+        .memory-game-section {
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .game-instructions {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 10px;
+  max-width: 600px; /* keeps it neat */
+  margin: 0 auto; /* center grid */
+}
+
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05);
+            border-color: var(--light-blue);
+        }
+
+        .memory-card.flipped {
+            background: linear-gradient(45deg, var(--accent-blue), var(--light-blue));
+            transform: scale(1.1);
+        }
+
+        .memory-card.matched {
+            background: linear-gradient(45deg, var(--light-blue), #90EE90);
+            border-color: #90EE90;
+            animation: pulse 0.5s ease;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1.1); }
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .game-stat {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 15px 25px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .game-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-blue);
+            display: block;
+        }
+
+        .game-controls {
+            margin-top: 30px;
+        }
+
+        .game-button {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .game-button:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .message-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .message-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 90%;
+            width: 500px;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .message-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            transition: opacity 0.3s ease;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .close-modal:hover {
+            opacity: 0.7;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            animation: float 15s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0vh) scale(0);
+            }
+        }
+
+        .footer {
+            margin-top: 80px;
+            padding: 50px 20px;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            border-radius: 30px 30px 0 0;
+        }
+
+        /* Mobile Responsive Improvements */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            .hero-section {
+                padding: 20px 0;
+                margin-bottom: 60px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 40px 0;
+            }
+            
+            .timeline {
+                padding: 0 10px;
+            }
+            
+            .timeline::after {
+                left: 25px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 60px;
+                padding-right: 10px;
+            }
+            
+            .timeline-item::after {
+                left: 15px !important;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+            }
+            
+            .memory-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                max-width: 300px;
+            }
+            
+            .game-stats {
+                gap: 15px;
+            }
+            
+            .game-stat {
+                padding: 12px 20px;
+                min-width: 100px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .memory-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                max-width: 280px;
+                padding: 10px;
+            }
+            
+            .game-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .stat-card {
+                padding: 20px 10px;
+            }
+            
+            .timeline-content {
+                padding: 15px;
+            }
+        }
+
+        /* Landscape mobile orientation */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                margin-bottom: 40px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="container">
+        <section class="hero-section">
+            <h1 class="hero-title">Happy Birthday ya 7abibiii!</h1>
+            <p class="hero-subtitle">Celebrating another year of your amazing journey</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="ageCounter">17</span>
+                    <span class="stat-label">Years of being pretty</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="daysTogether">448</span>
+                    <span class="stat-label">Days Together</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Reasons I Love You</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="smilesCount">Alot</span>
+                    <span class="stat-label">Of smiles Shared</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="memory-game-section">
+            <h2 class="section-title">The game returns</h2>
+            <div class="game-instructions">
+                <p>💙 Click the cards to find matching pairs and unlock special birthday messages! 💙</p>
+            </div>
+            
+            <div class="game-stats">
+                <div class="game-stat">
+                    <span class="game-stat-number" id="moves">0</span>
+                    <span class="stat-label">Moves</span>
+                </div>
+                <div class="game-stat">
+                    <span class="game-stat-number" id="matches">0</span>
+                    <span class="stat-label">Matches</span>
+                </div>
+                <div class="game-stat">
+                    <span class="game-stat-number" id="timer">0</span>
+                    <span class="stat-label">Time</span>
+                </div>
+            </div>
+
+            <div class="memory-grid" id="memoryGrid"></div>
+            
+            <div class="game-controls">
+                <button class="game-button" onclick="resetGame()">🔄 New Game</button>
+                <button class="game-button" onclick="showHint()">💡 Hint</button>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">Made with endless love and code </p>
+            <p>You deserve all the happiness in the world, today and every day.</p>
+        </footer>
+    </div>
+
+    <div class="message-modal" id="messageModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+<script>
+    /* ==== Birthday Page JS — fixed & scoped correctly ==== */
+
+    // Memory Game Data
+    const gameData = [
+        { emoji: '💙', message: 'You are my heart, my soul, my everything. Every beat of my heart whispers your name.' },
+        { emoji: '🌟', message: 'You shine brighter than all the stars in the sky. You light up my entire universe!' },
+        { emoji: '🎂', message: 'nothing sweet, f u' },
+        { emoji: '💕', message: 'Every day with you feels like a fairytale. Thank you for being my happy ending.' },
+        { emoji: '🌹', message: 'Like a rose, you bring beauty and fragrance to every moment of my life.' },
+        { emoji: '✨', message: 'You add magic to the ordinary and turn every moment into something extraordinary.' },
+        { emoji: '🦋', message: 'You transformed my life just like a butterfly transforms from a cocoon - beautiful and magical.' },
+        { emoji: '🌈', message: 'You are the rainbow after my storm, bringing color and hope to my world.' }
+    ];
+
+    let gameCards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let moves = 0;
+    let gameTimer = 0;
+    let timerInterval;
+
+    // --- Game ---
+    function initializeGame() {
+        gameCards = [];
+        gameData.forEach(item => {
+            gameCards.push(item, item); // pairs
+        });
+
+        // Shuffle
+        gameCards.sort(() => Math.random() - 0.5);
+
+        // Reset state
+        flippedCards = [];
+        matchedPairs = 0;
+        moves = 0;
+        gameTimer = 0;
+
+        // Update UI
+        document.getElementById('moves').textContent = '0';
+        document.getElementById('matches').textContent = '0';
+        document.getElementById('timer').textContent = '0';
+
+        // Build grid
+        const grid = document.getElementById('memoryGrid');
+        grid.innerHTML = '';
+
+        gameCards.forEach((card, index) => {
+            const cardElement = document.createElement('div');
+            cardElement.className = 'memory-card';
+            cardElement.textContent = '?';
+            cardElement.dataset.index = index;
+            cardElement.dataset.emoji = card.emoji;
+            cardElement.dataset.message = card.message;
+            cardElement.addEventListener('click', flipCard);
+            grid.appendChild(cardElement);
+        });
+
+        // Timer
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            gameTimer++;
+            document.getElementById('timer').textContent = gameTimer;
+        }, 1000);
+    }
+
+    function flipCard(event) {
+        const card = event.currentTarget;
+
+        if (card.classList.contains('flipped') || card.classList.contains('matched') || flippedCards.length >= 2) {
+            return;
+        }
+
+        card.classList.add('flipped');
+        card.textContent = card.dataset.emoji;
+        flippedCards.push(card);
+
+        if (flippedCards.length === 2) {
+            moves++;
+            document.getElementById('moves').textContent = moves;
+            setTimeout(checkMatch, 600);
+        }
+    }
+
+    function checkMatch() {
+            const [card1, card2] = flippedCards;
+
+            if (card1.dataset.emoji === card2.dataset.emoji) {
+                // --- Match ---
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                document.getElementById('matches').textContent = matchedPairs;
+
+                showModal(`
+      <h2 style="color: var(--light-blue); margin-bottom: 20px;">${card1.dataset.emoji} Perfect Match!</h2>
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">${card1.dataset.message}</p>
+      <div style="font-size: 2rem;">${card1.dataset.emoji}${card1.dataset.emoji}</div>
+    `);
+
+                if (matchedPairs === gameData.length) {
+                    clearInterval(timerInterval);
+                    setTimeout(() => {
+                        showModal(`
+          <h2 style="color: var(--light-blue); margin-bottom: 20px;">🎉 Congratulations!</h2>
+          <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 20px;">You completed the memory game!</p>
+          <p style="margin-bottom: 20px;">Time: ${gameTimer}s | Moves: ${moves}</p>
+          <p style="font-size: 1.1rem; color: var(--light-blue);">Happy Birthday, my love! 💙</p>
+        `);
+                    }, 1200);
+                }
+
+                flippedCards = []; // reset for next turn
+            } else {
+                // --- No Match ---
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    card1.textContent = '?';
+                    card2.textContent = '?';
+                    flippedCards = []; // reset after hiding
+                }, 300); // delay just to show briefly
+            }
+        }
+
+
+    function resetGame() {
+        clearInterval(timerInterval);
+        initializeGame();
+    }
+
+    function showHint() {
+        const unmatched = document.querySelectorAll('.memory-card:not(.matched)');
+        if (unmatched.length > 0) {
+            const randomCard = unmatched[Math.floor(Math.random() * unmatched.length)];
+            const oldBg = randomCard.style.background;
+            randomCard.style.background = 'rgba(168, 230, 207, 0.3)';
+            setTimeout(() => {
+                randomCard.style.background = oldBg;
+            }, 2000);
+        }
+    }
+
+    // --- Modal ---
+    function showModal(content) {
+        document.getElementById('modalContent').innerHTML = content;
+        document.getElementById('messageModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('messageModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // --- Particles (finished) ---
+    function createParticles() {
+        const container = document.getElementById('particles');
+        if (!container) return;
+        for (let i = 0; i < 60; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = 10 + Math.random() * 15 + 's';
+            particle.style.animationDelay = (-Math.random() * 20) + 's';
+            particle.style.opacity = (0.3 + Math.random() * 0.7).toString();
+            container.appendChild(particle);
+        }
+    }
+
+    // Init and expose functions for inline onclick handlers
+    document.addEventListener('DOMContentLoaded', () => {
+        createParticles();
+        initializeGame();
+
+        // Make these available to the buttons' onclick attributes
+        window.resetGame = resetGame;
+        window.showHint = showHint;
+        window.closeModal = closeModal;
+    });
+</script>
